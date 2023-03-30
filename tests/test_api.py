@@ -37,11 +37,6 @@ def test_update_user():
     assert S(schema.schema.update_user) == update_user.json()
 
 
-def test_delete_user():
-    delete_user: Response = requests.delete(url=" https://reqres.in/api/users/2")
-    assert delete_user.status_code == 204
-
-
 def test_login_successfully():
     login_successfully: Response = requests.post(
         url="https://reqres.in/api/login",
@@ -67,3 +62,8 @@ def test_login_unsuccessfully():
 
     assert login_unsuccessfully.status_code == 400
     assert S(schema.schema.login_unsuccessfully) == login_unsuccessfully.json()
+
+
+def test_delete_user():
+    delete_user: Response = requests.delete(url=" https://reqres.in/api/users/2")
+    assert delete_user.status_code == 204
